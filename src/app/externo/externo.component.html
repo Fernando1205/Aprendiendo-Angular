@@ -1,0 +1,15 @@
+<h1>Usuarios</h1>
+
+<div *ngIf="users; else cargando">
+    <ul>
+        <li *ngFor="let user of users">
+            <img src="{{ user.avatar }}" alt="avatar">
+            <p>{{ user.first_name + ' ' + user.last_name | uppercase}}</p>
+            <p>{{ user.email }}</p>
+        </li>
+    </ul>
+</div>
+
+<ng-template #cargando>
+    <div class="loader"></div>
+</ng-template>
