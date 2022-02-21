@@ -1,1 +1,14 @@
-<p>home works!</p>
+<h1>Pagina principal</h1>
+
+<div *ngIf="identificado; then Siidentificado else noIdentificado">
+</div>
+
+<ng-template #noIdentificado>
+    <p>No estas identificado, Pulsa este botón para identificarte</p>
+    <button (click)="setIdentificado()">Pulsa</button>
+</ng-template>
+
+<ng-template #Siidentificado>
+    <h3>Borrar identificacion</h3>
+    <button (click)="unsetIdentificado()">Pulsa</button>
+</ng-template>
