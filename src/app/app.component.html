@@ -4,6 +4,17 @@
  }">{{ title }}</h1>
 <p> {{ descripcion | uppercase }} </p>
 
-<app-videogame></app-videogame>
+<ul>
+    <li [routerLink]="['/home']" [routerLinkActive]="['active']" routerLink=""><a>Home</a></li>
+    <li [routerLink]="['/videogame']" [routerLinkActive]="['active']" routerLink="videogame"><a>Video juegos</a></li>
+    <li [routerLink]="['/zapatos']" [routerLinkActive]="['active']" routerLink="zapatos"><a>Zapatos</a></li>
+    <li [routerLink]="['/muebles']" [routerLinkActive]="['active']" routerLink="muebles"><a>Muebles</a></li>
+</ul>
+
+<hr>
+
+<!-- <app-videogame></app-videogame>
 <app-zapatos></app-zapatos>
-<app-muebles></app-muebles>
+<app-muebles></app-muebles> -->
+
+<router-outlet></router-outlet>

@@ -1,4 +1,10 @@
 <h2>{{ title }}</h2>
+
+<button (click)="redirigir()">Llevame a Zapatos</button>
+
+<p *ngIf="color">Dato pasado por Url: {{ color }}</p>
+<p *ngIf="followers">Tus seguiredores son: {{ followers }}</p>
+
 <ul>
     <li *ngFor="let mueble of muebles"> {{ mueble | uppercase }} </li>
 </ul>
