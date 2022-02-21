@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Zapato } from '../models/zapato';
+import { ZapatoService } from '../services/zapatos.service';
 
 @Component({
   selector: 'app-zapatos',
   templateUrl: './zapatos.component.html',
-  styleUrls: ['./zapatos.component.scss']
+  styleUrls: ['./zapatos.component.scss'],
+  providers: [ZapatoService]
 })
 
 export class ZapatosComponent implements OnInit{
@@ -12,7 +14,7 @@ export class ZapatosComponent implements OnInit{
   zapatos: Array<any> = [
     'Tennis', 'Zapatos', 'Chanclas'
   ];
-  zapatosNuevo: Array<Zapato>;
+  zapatosNuevo: Array<Zapato> = [];
   marcas:Array<string>=[];
   marcasOrd: boolean = false;
   precios:Array<number> = [];
@@ -20,18 +22,14 @@ export class ZapatosComponent implements OnInit{
   miMarca:string ='';
   index: any;
 
-  constructor(){
+  constructor(
+    private zapatoService: ZapatoService
+  ){
     this.color = 'blue';
-    this.zapatosNuevo = [
-      new Zapato('Reeb','Reebook','blanco',500,true),
-      new Zapato('Spartan','Reebook','doradas',450,true),
-      new Zapato('Nike classic','Nike','negro',600,false),
-      new Zapato('Classic','Adidas','gris',400,true),
-      new Zapato('Gucci','Gucci','plateadps',2500,false),
-    ]
   }
 
   ngOnInit(): void {
+    this.zapatosNuevo = this.zapatoService.getZapatos();
     this.getMarcas();
     this.getPreciosMayorMenos();
   }
