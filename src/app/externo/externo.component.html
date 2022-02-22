@@ -1,5 +1,7 @@
 <h1>Usuarios</h1>
 
+<p>Fecha: {{ date | date:'fullDate' }}</p>
+<p>{{ 24 | calculadora: 10 }}</p>
 <div *ngIf="users; else cargando">
     <ul>
         <li *ngFor="let user of users">

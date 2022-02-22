@@ -11,11 +11,15 @@ export class ExternoComponent implements OnInit {
 
   public users: any;
   public userId: any;
+  public date: any;
+
   constructor(
     private peticionesSservice: PeticionesService
   ) { }
 
   ngOnInit(): void {
+
+    this.date = new Date(2022, 2, 21);
     setTimeout(() => {
       this.peticionesSservice.getUsers().subscribe(
         result => {
