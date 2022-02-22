@@ -2,6 +2,36 @@
 
 <p>Fecha: {{ date | date:'fullDate' }}</p>
 <p>{{ 24 | calculadora: 10 }}</p>
+
+<hr>
+<h2>Crear Usuario</h2>
+
+<div *ngIf="user_save">
+    <h3>Usuario creado exitosamente</h3>
+    <h5>Usuario {{ user_save.name }} Trabajo: {{ user_save.job }}</h5>
+</div>
+<form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+    <p>
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" #name="ngModel" [(ngModel)]="new_user.name" required>
+        <span *ngIf="name.touched && !name.valid">
+          Nombre no valido
+        </span>
+    </p>
+
+    <p>
+        <label for="job">Trabajo:</label>
+        <input type="text" name="job" #job="ngModel" [(ngModel)]="new_user.job" required>
+        <span *ngIf="job.touched && !job.valid">
+          Trabajo no valido
+        </span>
+    </p>
+
+    <input type="submit" value="Guadar Usuario" [disabled]="!newUser.form.valid">
+</form>
+
+<hr>
+
 <div *ngIf="users; else cargando">
     <ul>
         <li *ngFor="let user of users">
@@ -15,3 +45,5 @@
 <ng-template #cargando>
     <div class="loader"></div>
 </ng-template>
+
+<hr>
